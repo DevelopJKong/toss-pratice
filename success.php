@@ -12,7 +12,8 @@ $data = ['orderId' => $orderId, 'amount' => $amount];
 
 $credential = base64_encode($secretKey . ':');
 
-$curlHandle = curl_init($url);
+$curlHandle = curl_init($url); // 이거는 어떤 api 이지?
+//curl를 초기화하는 api 입니다
 
 curl_setopt_array($curlHandle, [
     CURLOPT_POST => TRUE,
@@ -23,6 +24,25 @@ curl_setopt_array($curlHandle, [
     ],
     CURLOPT_POSTFIELDS => json_encode($data)
 ]);
+
+//curl를 setopt를 array로 만드는 api 입니다
+//CURLOPT_POST => HTTP METHOD가 POST 인지 아닌지 확인
+//CURLOPT_RETURNTRANSFER => 
+
+/*
+TRUE 설정 시 curl_exec () 반환 값의 문자열을 반환
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+*/
+
+//CURLOPT_POSTFIELDS =>
+/*
+HTTP "POST"작업으로 게시 할 전체 데이터. 
+curl_setopt($ch, CURLOPT_POSTFIELDS, Array());
+*/
+
+
+
+
 
 $response = curl_exec($curlHandle);
 
